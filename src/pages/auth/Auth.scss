@@ -83,13 +83,6 @@ button {
   background-color: #0496f7;
 }
 
-// .button-bg-transparent {
-//   background-color: transparent;
-// }
-
-// .button-bg-transparent:hover {
-//   background-color: var(--dark-white);
-// }
 button:hover {
   background-color: var(--dark-white);
 }
@@ -177,7 +170,8 @@ button:hover {
       color: var(--blue);
 
       &:hover {
-        border-bottom: 1px solid #1d9bf0;
+        // border-bottom: 1px solid #1d9bf0;
+        text-decoration: underline;
       }
     }
   }
@@ -221,6 +215,10 @@ button:hover {
     color: #0496f7;
     position: relative;
     top: -5px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   h4 {

@@ -11,10 +11,19 @@ import Modal from "../../component/modal/Modal";
 import { useState } from "react";
 import CreateAccountModal from "../../component/createAccountModal/CreateAccountModal";
 import { day, month } from "../../faker/dmy";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Auth = () => {
   const [signinModal, setSigninModal] = useState(false);
   const [createAccountModal, setcreateAccountModal] = useState(false);
+
+  // handleUserRegister form
+  const handleUserRegister = (e) => {
+    e.preventDefault();
+    toast.success("form submitted");
+    Swal.fire("ok");
+  };
 
   // get facebook years
   const years = Array.from(
@@ -64,64 +73,66 @@ const Auth = () => {
       {/* create account modal starts */}
       {createAccountModal && (
         <CreateAccountModal hide={setcreateAccountModal}>
-          <div className="create-account-container">
-            <h2>Create your account</h2>
+          <form onSubmit={handleUserRegister}>
+            <div className="create-account-container">
+              <h2>Create your account</h2>
 
-            <input type="text" placeholder="Name" />
-            <input type="text" placeholder="Phone" />
+              <input type="text" placeholder="Name" />
+              <input type="text" placeholder="Phone" />
 
-            <Link>Use email instead</Link>
+              <Link>Use email instead</Link>
 
-            <h4>Date of birth</h4>
+              <h4>Date of birth</h4>
 
-            <p>
-              This will not be shown publicly. Confirm your own age, even if
-              this account is for a business, a pet, or something else.
-            </p>
+              <p>
+                This will not be shown publicly. Confirm your own age, even if
+                this account is for a business, a pet, or something else.
+              </p>
 
-            <div className="input-select">
-              <select className="s-month" name="" id="">
-                <option value="">Month</option>
-                {month?.map((item, index) => (
-                  <option
-                    value={item}
-                    key={index}
-                    selected={new Date().getMonth() == index ? true : false}
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
+              <div className="input-select">
+                <select className="s-month" name="" id="">
+                  <option value="">Month</option>
+                  {month?.map((item, index) => (
+                    <option
+                      value={item}
+                      key={index}
+                      selected={new Date().getMonth() == index ? true : false}
+                    >
+                      {item}
+                    </option>
+                  ))}
+                </select>
 
-              <select className="s-day" name="" id="">
-                <option value="">Day</option>
-                {day?.map((item, index) => (
-                  <option
-                    value={item}
-                    key={index}
-                    selected={new Date().getDate() == item ? true : false}
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
+                <select className="s-day" name="" id="">
+                  <option value="">Day</option>
+                  {day?.map((item, index) => (
+                    <option
+                      value={item}
+                      key={index}
+                      selected={new Date().getDate() == item ? true : false}
+                    >
+                      {item}
+                    </option>
+                  ))}
+                </select>
 
-              <select className="s-year" name="" id="">
-                <option value="">Year</option>
-                {years?.map((item, index) => (
-                  <option
-                    value={item}
-                    key={index}
-                    selected={new Date().getFullYear() == item ? true : false}
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
+                <select className="s-year" name="" id="">
+                  <option value="">Year</option>
+                  {years?.map((item, index) => (
+                    <option
+                      value={item}
+                      key={index}
+                      selected={new Date().getFullYear() == item ? true : false}
+                    >
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <button type="submit">Next</button>
             </div>
-
-            <button>Next</button>
-          </div>
+          </form>
         </CreateAccountModal>
       )}
       {/* create account modal ends here */}

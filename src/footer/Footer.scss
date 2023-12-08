@@ -17,7 +17,8 @@
           color: #536471;
 
           &:hover {
-            border-bottom: 1px solid #536471;
+            // border-bottom: 1px solid #536471;
+            text-decoration: underline;
           }
         }
       }
