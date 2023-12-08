@@ -1,6 +1,6 @@
 .footer {
-  width: 830px;
-  margin: 40px auto;
+  width: 1200px;
+  margin: 20px auto;
   text-align: center;
   // display: flex;
   // justify-content: center;
@@ -9,11 +9,16 @@
   .link {
     ul {
       display: flex;
+      justify-content: center;
       gap: 10px;
       li {
         a {
-          font-size: 11px;
-          color: var(--insta-txt-secondary-color);
+          font-size: 13px;
+          color: #536471;
+
+          &:hover {
+            border-bottom: 1px solid #536471;
+          }
         }
       }
     }
@@ -22,8 +27,8 @@
   .copy-right {
     margin: 14px 0;
     p {
-      font-size: 12px;
-      color: var(--insta-txt-secondary-color);
+      font-size: 13px;
+      color: #536471;
     }
   }
 }

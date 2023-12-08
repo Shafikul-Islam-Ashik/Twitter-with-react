@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="link">
           <ul>
             <li>
-              <Link to="">Meta</Link>
+              <Link to="">Download the X app</Link>
             </li>
             <li>
               <Link to="">About</Link>

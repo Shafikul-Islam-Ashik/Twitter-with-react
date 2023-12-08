@@ -1,43 +1,112 @@
-.modal {
-  background-color: var(--dark-white-transparent);
+// .modal {
+//   background-color: var(--dark-white-transparent);
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: absolute;
+// }
+
+// .modal-container {
+//   border-radius: 20px;
+//   background-color: #fff;
+//   width: 500px;
+//   height: 500px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: auto;
+//   position: absolute;
+// }
+// .modal-content {
+//   width: 50%;
+// }
+
+// .button-close-modal {
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   border: none;
+// }
+
+// .logo-twitter-modal {
+//   position: absolute;
+//   top: 20px;
+// }
+
+// .modal-content input {
+//   border: 1px solid var(--ligth-gray);
+//   border-radius: 5px;
+//   padding: 10px;
+//   background-color: var(--dark-white);
+// }
+
+.modal-blur-area {
   width: 100vw;
   height: 100vh;
+  background-image: linear-gradient(
+    rgba(rgb(153, 153, 153), 0.7),
+    rgba(rgb(153, 153, 153), 0.7)
+  );
+  position: fixed;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-}
+  // overflow-y: hidden;
 
-.modal-container {
-  border-radius: 20px;
-  background-color: var(--dark-white);
-  width: 500px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  position: absolute;
-}
-.modal-content {
-  width: 50%;
-}
+  .modal-container {
+    width: 600px;
+    height: 560px;
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    border-radius: 14px;
+    position: relative;
 
-.button-close-modal {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border: none;
-}
+    .modal-header {
+      padding: 15px 15px 0px 15px;
+      // display: flex;
+      // justify-content: space-between;
+      // align-items: center;
 
-.logo-twitter-modal {
-  position: absolute;
-  top: 20px;
-}
+      button {
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        position: relative;
+        top: -11px;
+        left: -139px;
 
-.modal-content input {
-  border: 1px solid var(--ligth-gray);
-  border-radius: 5px;
-  padding: 10px;
-  background-color: var(--dark-white);
+        svg {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          transition: 0.3s;
+          // padding: 5px;
+
+          &:hover {
+            background-color: #95a0a5;
+          }
+        }
+      }
+
+      span {
+        position: absolute;
+        left: 50%;
+        top: 15px;
+        transform: translateX(-50%);
+        svg {
+          font-size: 30px;
+        }
+      }
+    }
+
+    .modal-body {
+      width: 50%;
+      margin: auto;
+      // padding-bottom: 15px;
+    }
+  }
 }

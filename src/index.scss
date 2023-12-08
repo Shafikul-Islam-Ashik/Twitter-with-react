@@ -10,11 +10,12 @@
 :root {
   --white: #fafafa;
   --dark-white: #e4e4e4;
-  --dark-white-transparent: #e4e4e48c;
+  --dark-white-transparent: #999999;
   --gray: #2c2c2c;
   // --ligth-gray: #8c8c8c;
   --ligth-gray: #dbdde1;
   --blue: #1d9bf0;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -41,7 +42,7 @@ img {
 }
 
 input:focus {
-  outline: 1px solid #9da0a7;
+  outline: 2px solid #1d9bf0;
 }
 select:focus {
   // outline: none;

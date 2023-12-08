@@ -7,11 +7,50 @@ import { BsTwitterX } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoApple } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import Modal from "../../component/modal/Modal";
+import { useState } from "react";
 
 const Auth = () => {
+  const [signinModal, setSigninModal] = useState(false);
+
   return (
     <>
       <Twit title="X. It's what's happening / X" />
+
+      {/* sign in modal starts */}
+
+      {signinModal && (
+        <Modal hide={setSigninModal}>
+          <div className="signin-conatiner">
+            <h3 className="signin-heading">Sign in to X</h3>
+
+            <button className="button-with-icon">
+              <FcGoogle />
+              <span style={{ color: "#3c4055", fontWeight: "500" }}>
+                Sign up with Google
+              </span>
+            </button>
+
+            <button className=" button-with-icon">
+              <IoLogoApple />
+              <span>Sign up with Apple</span>
+            </button>
+
+            <div className="devider text-center">or</div>
+
+            <input type="text" placeholder="Phone, email address or username" />
+
+            <button className="next-btn">Next</button>
+            <button className="">Forgot password?</button>
+
+            <p>
+              Don’t have an account? <Link>Sign up</Link>
+            </p>
+          </div>
+        </Modal>
+      )}
+
+      {/* sign in modal ends here */}
 
       <div className="wrapper">
         <div className="container">
@@ -26,13 +65,13 @@ const Auth = () => {
               <h2 className="mt-20">Join today.</h2>
 
               <div className="button-group">
-                <button className="mt-20 button-bg-white">
+                <button className="mt-20 button-with-icon">
                   <FcGoogle />
                   <span style={{ color: "#3c4055", fontWeight: "500" }}>
                     Sign up with Google
                   </span>
                 </button>
-                <button className="mt-10 button-bg-white">
+                <button className="mt-10 button-with-icon">
                   <IoLogoApple />
                   <span>Sign up with Apple</span>
                 </button>
@@ -50,7 +89,10 @@ const Auth = () => {
 
               <h4 className="mt-30">Already have an account?</h4>
 
-              <button className="mt-10 button-bg-white text-blue">
+              <button
+                onClick={() => setSigninModal(true)}
+                className="mt-10 button-with-icon text-blue"
+              >
                 Sign in
               </button>
             </div>
