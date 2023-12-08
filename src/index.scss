@@ -1,0 +1,48 @@
+// :root {
+//   --insta-primary-color: #4cb5f9;
+//   --insta-secondary-color: #0095f6;
+//   --insta-bg-gray: #fafafa;
+//   --insta-border: 1px solid rgb(219, 219, 219);
+//   --insta-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+//   --insta-txt-secondary-color: rgb(115, 115, 115);
+// }
+
+:root {
+  --white: #fafafa;
+  --dark-white: #e4e4e4;
+  --dark-white-transparent: #e4e4e48c;
+  --gray: #2c2c2c;
+  // --ligth-gray: #8c8c8c;
+  --ligth-gray: #dbdde1;
+  --blue: #1d9bf0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
+
+input:focus {
+  outline: 1px solid #9da0a7;
+}
+select:focus {
+  // outline: none;
+}

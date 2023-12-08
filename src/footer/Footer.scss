@@ -1,0 +1,29 @@
+.footer {
+  width: 830px;
+  margin: 40px auto;
+  text-align: center;
+  // display: flex;
+  // justify-content: center;
+  // flex-direction: column;
+
+  .link {
+    ul {
+      display: flex;
+      gap: 10px;
+      li {
+        a {
+          font-size: 11px;
+          color: var(--insta-txt-secondary-color);
+        }
+      }
+    }
+  }
+
+  .copy-right {
+    margin: 14px 0;
+    p {
+      font-size: 12px;
+      color: var(--insta-txt-secondary-color);
+    }
+  }
+}
