@@ -9,16 +9,26 @@ import { IoLogoApple } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Modal from "../../component/modal/Modal";
 import { useState } from "react";
+import CreateAccountModal from "../../component/createAccountModal/CreateAccountModal";
+import { day, month } from "../../faker/dmy";
 
 const Auth = () => {
   const [signinModal, setSigninModal] = useState(false);
+  const [createAccountModal, setcreateAccountModal] = useState(false);
+
+  // get facebook years
+  const years = Array.from(
+    {
+      length: new Date().getFullYear() - 1900,
+    },
+    (_, i) => 1901 + i
+  ).reverse();
 
   return (
     <>
       <Twit title="X. It's what's happening / X" />
 
       {/* sign in modal starts */}
-
       {signinModal && (
         <Modal hide={setSigninModal}>
           <div className="signin-conatiner">
@@ -49,8 +59,72 @@ const Auth = () => {
           </div>
         </Modal>
       )}
-
       {/* sign in modal ends here */}
+
+      {/* create account modal starts */}
+      {createAccountModal && (
+        <CreateAccountModal hide={setcreateAccountModal}>
+          <div className="create-account-container">
+            <h2>Create your account</h2>
+
+            <input type="text" placeholder="Name" />
+            <input type="text" placeholder="Phone" />
+
+            <Link>Use email instead</Link>
+
+            <h4>Date of birth</h4>
+
+            <p>
+              This will not be shown publicly. Confirm your own age, even if
+              this account is for a business, a pet, or something else.
+            </p>
+
+            <div className="input-select">
+              <select className="s-month" name="" id="">
+                <option value="">Month</option>
+                {month?.map((item, index) => (
+                  <option
+                    value={item}
+                    key={index}
+                    selected={new Date().getMonth() == index ? true : false}
+                  >
+                    {item}
+                  </option>
+                ))}
+              </select>
+
+              <select className="s-day" name="" id="">
+                <option value="">Day</option>
+                {day?.map((item, index) => (
+                  <option
+                    value={item}
+                    key={index}
+                    selected={new Date().getDate() == item ? true : false}
+                  >
+                    {item}
+                  </option>
+                ))}
+              </select>
+
+              <select className="s-year" name="" id="">
+                <option value="">Year</option>
+                {years?.map((item, index) => (
+                  <option
+                    value={item}
+                    key={index}
+                    selected={new Date().getFullYear() == item ? true : false}
+                  >
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button>Next</button>
+          </div>
+        </CreateAccountModal>
+      )}
+      {/* create account modal ends here */}
 
       <div className="wrapper">
         <div className="container">
@@ -78,7 +152,12 @@ const Auth = () => {
 
                 <div className="devider text-center">or</div>
 
-                <button className="mt-10 button-bg-blue">Create account</button>
+                <button
+                  onClick={() => setcreateAccountModal(true)}
+                  className="mt-10 button-bg-blue"
+                >
+                  Create account
+                </button>
               </div>
 
               <p className="text-muted mt-10">

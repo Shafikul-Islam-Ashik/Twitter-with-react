@@ -96,14 +96,6 @@ button:hover {
 
 // signin modal css
 
-// .twitter-icon {
-//   position: absolute;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   svg {
-//     font-size: 30px;
-//   }
-// }
 .signin-conatiner {
   display: flex;
   flex-direction: column;
@@ -180,6 +172,109 @@ button:hover {
     font-size: 14px;
     margin-top: 30px;
     color: #5d6d79;
+
+    a {
+      color: var(--blue);
+
+      &:hover {
+        border-bottom: 1px solid #1d9bf0;
+      }
+    }
+  }
+}
+
+// create account modal css
+.create-account-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h2 {
+    font-weight: 600;
+  }
+  input {
+    width: 100%;
+    border: 1px solid var(--ligth-gray);
+
+    padding: 16px 8px;
+    font-size: 16px;
+    // color: #5d6d79;
+    border-radius: 4px;
+    position: relative;
+
+    &::placeholder {
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    &:focus::placeholder {
+      position: absolute;
+      font-size: 13px;
+      transform: translateY(-13px);
+      color: #0496f7;
+    }
+  }
+
+  a {
+    text-align: right;
+    font-size: 14px;
+    color: #0496f7;
+    position: relative;
+    top: -5px;
+  }
+
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: -15px;
+  }
+  p {
+    line-height: 16px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: -5px;
+  }
+
+  .input-select {
+    display: flex;
+    gap: 10px;
+
+    .s-month {
+      flex: 2;
+    }
+    .s-day {
+      flex: 1;
+    }
+    .s-year {
+      flex: 1;
+    }
+
+    select {
+      border: 1px solid var(--ligth-gray);
+      padding: 16px 8px;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+  }
+
+  button {
+    width: 100%;
+    background-color: #87898c;
+    color: #fff;
+    letter-spacing: 0.5px;
+    font-size: 17px;
+    border-radius: 25px;
+    padding: 12px 0;
+
+    &:hover {
+      background-color: #201f1f;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    // margin-top: 30px;
+    color: #536471;
 
     a {
       color: var(--blue);
