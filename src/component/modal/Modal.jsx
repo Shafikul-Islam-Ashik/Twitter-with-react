@@ -14,7 +14,7 @@ const Modal = ({ children, hide }) => {
       <div className="modal-container">
         <div className="modal">
           <div className="modal-header">
-            <button onClick={() => hide(false)}>
+            <button className="btn" onClick={() => hide(false)}>
               <LiaTimesSolid />
             </button>
             <span>

@@ -1,6 +1,5 @@
-// export default Modal;
 import { LiaTimesSolid } from "react-icons/lia";
-import { BsTwitterX } from "react-icons/bs";
+// import { BsTwitterX } from "react-icons/bs";
 import "./CreateAccountModal.scss";
 
 const CreateAccountModal = ({ children, hide }) => {
@@ -9,7 +8,7 @@ const CreateAccountModal = ({ children, hide }) => {
       <div className="create-acc-modal-container">
         <div className="modal">
           <div className="modal-header">
-            <button onClick={() => hide(false)}>
+            <button className="btn" onClick={() => hide(false)}>
               <LiaTimesSolid />
             </button>
             <span>Step 1 of 5</span>

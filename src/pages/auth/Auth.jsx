@@ -1,6 +1,3 @@
-import "./Auth.scss";
-// import { Link } from "react-router-dom";
-
 import Footer from "../../footer/Footer";
 import Twit from "../../component/twit/Twit";
 import { BsTwitterX } from "react-icons/bs";
@@ -11,18 +8,51 @@ import Modal from "../../component/modal/Modal";
 import { useState } from "react";
 import CreateAccountModal from "../../component/createAccountModal/CreateAccountModal";
 import { day, month } from "../../faker/dmy";
-import { toast } from "react-toastify";
-import Swal from "sweetalert2";
+
+// import Swal from "sweetalert2";
+
+import "./Auth.scss";
+import { createToast, isValidMobile } from "../../helpers/helpers";
 
 const Auth = () => {
   const [signinModal, setSigninModal] = useState(false);
   const [createAccountModal, setcreateAccountModal] = useState(false);
 
-  // handleUserRegister form
+  // user register form management
+  const [input, setInput] = useState({
+    name: "",
+    phone: "",
+    day: "",
+    month: "",
+    year: "",
+  });
+
+  // handle input
+  const handleInput = (e) => {
+    setInput((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  // handleUserRegister (create account) form
   const handleUserRegister = (e) => {
     e.preventDefault();
-    toast.success("form submitted");
-    Swal.fire("ok");
+
+    if (
+      !input.name ||
+      !input.phone ||
+      !input.day ||
+      !input.month ||
+      !input.year
+    ) {
+      createToast("All fields are required");
+    } else if (!isValidMobile(input.phone)) {
+      createToast("Invalid phone number");
+    } else {
+      createToast("Data stable", "success");
+      // Swal.fire("ok");
+    }
   };
 
   // get facebook years
@@ -43,14 +73,14 @@ const Auth = () => {
           <div className="signin-conatiner">
             <h3 className="signin-heading">Sign in to X</h3>
 
-            <button className="button-with-icon">
+            <button className="button-with-icon btn">
               <FcGoogle />
               <span style={{ color: "#3c4055", fontWeight: "500" }}>
                 Sign up with Google
               </span>
             </button>
 
-            <button className=" button-with-icon">
+            <button className=" button-with-icon btn">
               <IoLogoApple />
               <span>Sign up with Apple</span>
             </button>
@@ -59,8 +89,8 @@ const Auth = () => {
 
             <input type="text" placeholder="Phone, email address or username" />
 
-            <button className="next-btn">Next</button>
-            <button className="">Forgot password?</button>
+            <button className="next-btn btn">Next</button>
+            <button className="btn">Forgot password?</button>
 
             <p>
               Don’t have an account? <Link>Sign up</Link>
@@ -70,15 +100,27 @@ const Auth = () => {
       )}
       {/* sign in modal ends here */}
 
-      {/* create account modal starts */}
+      {/* create account (user register) modal starts */}
       {createAccountModal && (
         <CreateAccountModal hide={setcreateAccountModal}>
           <form onSubmit={handleUserRegister}>
             <div className="create-account-container">
               <h2>Create your account</h2>
 
-              <input type="text" placeholder="Name" />
-              <input type="text" placeholder="Phone" />
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={input.name}
+                onChange={handleInput}
+              />
+              <input
+                type="text"
+                placeholder="Phone"
+                name="phone"
+                value={input.phone}
+                onChange={handleInput}
+              />
 
               <Link>Use email instead</Link>
 
@@ -90,7 +132,12 @@ const Auth = () => {
               </p>
 
               <div className="input-select">
-                <select className="s-month" name="" id="">
+                <select
+                  className="s-month"
+                  id=""
+                  name="month"
+                  onChange={handleInput}
+                >
                   <option value="">Month</option>
                   {month?.map((item, index) => (
                     <option
@@ -103,7 +150,12 @@ const Auth = () => {
                   ))}
                 </select>
 
-                <select className="s-day" name="" id="">
+                <select
+                  className="s-day"
+                  id=""
+                  name="day"
+                  onChange={handleInput}
+                >
                   <option value="">Day</option>
                   {day?.map((item, index) => (
                     <option
@@ -116,7 +168,12 @@ const Auth = () => {
                   ))}
                 </select>
 
-                <select className="s-year" name="" id="">
+                <select
+                  className="s-year"
+                  id=""
+                  name="year"
+                  onChange={handleInput}
+                >
                   <option value="">Year</option>
                   {years?.map((item, index) => (
                     <option
@@ -130,7 +187,9 @@ const Auth = () => {
                 </select>
               </div>
 
-              <button type="submit">Next</button>
+              <button className="btn" type="submit">
+                Next
+              </button>
             </div>
           </form>
         </CreateAccountModal>
@@ -150,13 +209,13 @@ const Auth = () => {
               <h2 className="mt-20">Join today.</h2>
 
               <div className="button-group">
-                <button className="mt-20 button-with-icon">
+                <button className="mt-20 button-with-icon btn">
                   <FcGoogle />
                   <span style={{ color: "#3c4055", fontWeight: "500" }}>
                     Sign up with Google
                   </span>
                 </button>
-                <button className="mt-10 button-with-icon">
+                <button className="mt-10 button-with-icon btn">
                   <IoLogoApple />
                   <span>Sign up with Apple</span>
                 </button>
@@ -165,7 +224,7 @@ const Auth = () => {
 
                 <button
                   onClick={() => setcreateAccountModal(true)}
-                  className="mt-10 button-bg-blue"
+                  className="mt-10 button-bg-blue btn"
                 >
                   Create account
                 </button>
@@ -181,7 +240,7 @@ const Auth = () => {
 
               <button
                 onClick={() => setSigninModal(true)}
-                className="mt-10 button-with-icon text-blue"
+                className="mt-10 button-with-icon text-blue btn"
               >
                 Sign in
               </button>
