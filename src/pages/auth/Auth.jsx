@@ -35,7 +35,7 @@ const Auth = () => {
     }));
   };
 
-  // handleUserRegister (create account) form
+  // handle UserRegister (create account) form
   const handleUserRegister = (e) => {
     e.preventDefault();
 
@@ -52,6 +52,34 @@ const Auth = () => {
     } else {
       createToast("Data stable", "success");
       // Swal.fire("ok");
+
+      // clear form
+      setInput({
+        name: "",
+        phone: "",
+        day: "",
+        month: "",
+        year: "",
+      });
+    }
+  };
+
+  // sign in form management
+  const [signinInput, setSigninInput] = useState({
+    phone_email_username: "",
+  });
+
+  // handle Signin Form
+  const handleSigninForm = (e) => {
+    e.preventDefault();
+
+    if (!signinInput.phone_email_username) {
+      createToast("Please enter mobile, email or username");
+    } else {
+      createToast("Form submitted", "success");
+
+      // clear form
+      setSigninInput({ phone_email_username: "" });
     }
   };
 
@@ -87,9 +115,25 @@ const Auth = () => {
 
             <div className="devider text-center">or</div>
 
-            <input type="text" placeholder="Phone, email address or username" />
+            <form onSubmit={handleSigninForm}>
+              <input
+                type="text"
+                placeholder="Phone, email address or username"
+                name="phone_email_username"
+                value={signinInput.phone_email_username}
+                onChange={(e) =>
+                  setSigninInput((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+              />
 
-            <button className="next-btn btn">Next</button>
+              <button type="submit" className="mt-20 next-btn btn">
+                Next
+              </button>
+            </form>
+
             <button className="btn">Forgot password?</button>
 
             <p>
@@ -136,6 +180,7 @@ const Auth = () => {
                   className="s-month"
                   id=""
                   name="month"
+                  value={input.month}
                   onChange={handleInput}
                 >
                   <option value="">Month</option>
@@ -143,7 +188,7 @@ const Auth = () => {
                     <option
                       value={item}
                       key={index}
-                      selected={new Date().getMonth() == index ? true : false}
+                      // selected={new Date().getMonth() == index ? true : false}
                     >
                       {item}
                     </option>
@@ -154,6 +199,7 @@ const Auth = () => {
                   className="s-day"
                   id=""
                   name="day"
+                  value={input.day}
                   onChange={handleInput}
                 >
                   <option value="">Day</option>
@@ -161,7 +207,7 @@ const Auth = () => {
                     <option
                       value={item}
                       key={index}
-                      selected={new Date().getDate() == item ? true : false}
+                      // selected={new Date().getDate() == item ? true : false}
                     >
                       {item}
                     </option>
@@ -172,6 +218,7 @@ const Auth = () => {
                   className="s-year"
                   id=""
                   name="year"
+                  value={input.year}
                   onChange={handleInput}
                 >
                   <option value="">Year</option>
@@ -179,7 +226,7 @@ const Auth = () => {
                     <option
                       value={item}
                       key={index}
-                      selected={new Date().getFullYear() == item ? true : false}
+                      // selected={new Date().getFullYear() == item ? true : false}
                     >
                       {item}
                     </option>
